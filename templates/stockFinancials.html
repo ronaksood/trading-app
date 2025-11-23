@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- we will use semantic ui for better styles -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css"
+    />
+    <style>
+      .card {
+        width: 190px;
+        height: 254px;
+        border-radius: 50px;
+        background: #e0e0e0;
+        box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+      }
+      /* From Uiverse.io by joe-watson-sbf */
+      .container1 {
+        color: white;
+        position: relative;
+        font-family: sans-serif;
+      }
+
+      .container1::before,
+      .container1::after {
+        content: "";
+        background-color: #fab5704c;
+        position: absolute;
+      }
+
+      .container1::before {
+        border-radius: 50%;
+        width: 6rem;
+        height: 6rem;
+        top: 30%;
+        right: 7%;
+      }
+
+      .container1::after {
+        content: "";
+        position: absolute;
+        height: 3rem;
+        top: 8%;
+        right: 5%;
+        border: 1px solid;
+      }
+
+      .container1 .box {
+        width: 15.875em;
+        height: 11.875em;
+        padding: 1rem;
+        background-color: #212121;
+        border: 1px solid rgba(255, 255, 255, 0.222);
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+        border-radius: 0.7rem;
+        transition: all ease 0.3s;
+      }
+
+      .container1 .box {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .container1 .box .title {
+        font-size: 2rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+      }
+
+      .container1 .box div strong {
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      .container1 .box div p {
+        margin: 0;
+        font-size: 0.9em;
+        font-weight: 300;
+        letter-spacing: 0.1em;
+      }
+
+      .container1 .box div span {
+        font-size: 0.7rem;
+        font-weight: 300;
+      }
+
+      .container1 .box div span:nth-child(3) {
+        font-weight: 500;
+        margin-right: 0.2rem;
+      }
+
+      .container1 .box:hover {
+        box-shadow: 0px 0px 20px 1px #212121;
+        border: 1px solid rgba(255, 255, 255, 0.454);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ui container">
+      <h1>
+        <a href="/stock/{{symbol}}/stock_details">Stock Financials</a>
+        <i class="arrow alternate circle right outline icon"></i>
+        {{symbol}}
+      </h1>
+
+      <div class="ui grid container">
+        <!-- From Uiverse.io by joe-watson-sbf -->
+        <div class="four wide column">
+          <div class="container1">
+            <div class="box">   
+              <span class="title">EBIDTA</span>
+              <div>
+                <strong>{{financials['metric']['forwardPE']}}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="four wide column">
+          <div class="container1">
+            <div class="box">
+              <span class="title">52 Week High</span>
+              <div>
+                <strong>{{financials['metric']['52WeekHigh']}}</strong>
+                <p>Date :{{financials['metric']['52WeekHighDate']}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="four wide column">
+          <div class="container1">
+            <div class="box">
+              <span class="title">52 Week Low</span>
+              <div>
+                <strong>{{financials['metric']['52WeekLow']}}</strong>
+                <p>Date {{financials['metric']['52WeekLowDate']}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="four wide column">
+          <div class="container1">
+            <div class="box">
+              <span class="title">10 Day Average Trading Volume :</span>
+              <div>
+                <strong
+                  >{{financials['metric']['10DayAverageTradingVolume']}}</strong
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="four wide column">
+          <div class="container1">
+            <div class="box">
+              <span class="title">5 day Return :</span>
+              <div>
+                <strong
+                  >{{financials['metric']['5DayPriceReturnDaily']}}</strong
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="four wide column">
+          <div class="container1">
+            <div class="box">
+              <span class="title">Quarterly Book Value :</span>
+              <div>
+                <strong
+                  >{{financials['metric']['bookValuePerShareQuarterly']}}</strong
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="four wide column">
+          <div class="container1">
+            <div class="box">
+              <span class="title">Annual Dividend Per Share :</span>
+              <div>
+                <strong
+                  >{{financials['metric']['dividendPerShareAnnual']}}</strong
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="four wide column">
+          <div class="container1">
+            <div class="box">
+              <span class="title">Ebidta Per Share TTM :</span>
+              <div>
+                <strong>{{financials['metric']['ebitdPerShareTTM']}}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+  </body>
+</html>

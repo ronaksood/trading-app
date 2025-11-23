@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stock Trends</title>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Semantic UI -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css"
+    />
+
+    <!-- Fix Chart.js scaling WITHOUT Tailwind -->
+    <style>
+      .chart-box {
+        width: 450px;
+        height: 450px;
+        margin: 0 auto;
+      }
+
+      /* Keep canvas looking normal */
+      canvas {
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="ui container" style="margin-top: 25px;">
+
+      <!-- Heading -->
+      <h1>
+        <a href="/stock">Stock Trends</a>
+        <i class="arrow alternate circle right outline icon"></i>
+        {{ symbol }}
+      </h1>
+
+      <!-- Chart Card -->
+      <div
+        class="ui raised very padded text container segment"
+        style="max-width: 500px; margin-top: 30px;"
+      >
+        <h3 class="ui header" style="text-align:center;">
+          RECOMMENDATION TRENDS
+        </h3>
+
+        <h4 style="text-align:center; margin-bottom: 12px;">
+          {{ trends[0]['period'] }}
+        </h4>
+
+        <div class="chart-box">
+          <canvas id="ratingPie" width="450" height="450"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Script for Chart -->
+    <script>
+      const ctx = document.getElementById("ratingPie");
+
+      new Chart(ctx, {
+        type: "pie",
+        data: {
+          labels: ["Strong Buy", "Buy", "Hold", "Sell", "Strong Sell"],
+          datasets: [
+            {
+              data: [
+                {{ trends[0]['strongBuy'] }},
+                {{ trends[0]['buy'] }},
+                {{ trends[0]['hold'] }},
+                {{ trends[0]['sell'] }},
+                {{ trends[0]['strongSell'] }}
+              ],
+              backgroundColor: [
+                "#4ade80",
+                "#22c55e",
+                "#facc15",
+                "#fb923c",
+                "#ef4444"
+              ],
+              borderWidth: 1
+            }
+          ]
+        },
+        options: {
+          responsive: false,  // important: use canvas width/height
+          plugins: {
+            legend: {
+              position: "top"
+            }
+          }
+        }
+      });
+    </script>
+
+    <!-- Semantic UI JS -->
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+  </body>
+</html>

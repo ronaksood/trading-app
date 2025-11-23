@@ -1,0 +1,5 @@
+pip3 install fastapi uvicorn
+
+here , fastapi is the framework we are going to use
+and uvicorn is the web server that we will use to server up our web server
+

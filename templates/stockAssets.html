@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- we will use semantic ui for better styles -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css"
+    />
+  </head>
+  <body>
+    <div class="ui container">
+        <h1>
+            <a href="/stock">Stock Assets</a>
+            <i class="arrow alternate circle right outline icon"></i>
+            {{symbol}}
+        </h1>
+        
+        <table class="ui selectable inverted table">
+            <thead>
+                <tr>
+                    <th>Label</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for asset in stock_assets['data'][0]['report']['bs'] %} 
+                <tr>
+                    <td>{{asset['label']}}</td>
+                    <td>{{asset['value']}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+  </body>
+</html>
+
+
+
+ 
+

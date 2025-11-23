@@ -1,0 +1,17 @@
+we are embedding charts from trading view 
+
+link -> tradingview/widgets/advanced-charts
+
+this is a free chart provider which we can embed in our web page
+
+to print the charts , we need to provide a exchange name also
+therefore we have to to delete our stock table 
+and make it again with modified schema in which we will have exchange name also
+
+using this we can easily embed the charts of all the stocks 
+
+
+ALLOW THE USER WHEN VISITING A GIVEN page
+EX -> apply opening range breakout strategy through a button
+ex -> so we will show a drop down to user to select a strategy and add 
+strategies through backend to the stock_details page

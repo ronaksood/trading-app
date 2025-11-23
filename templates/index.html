@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading App</title>
+    <!-- we will use semantic ui for better styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+</head>
+<body>
+    <div class="ui container">
+        <h1>Stocks Table</h1>
+<!-- get method means when we are going to submit , it is going
+to show query string in the url
+example = ?some_value = some_value  
+here = ?filter = new_intraday_highs etc.             -->
+        <form method="get"> 
+            <select name="filter">
+                <option value="">All Stocks</option>
+                <option value="new_intraday_highs">New Intraday Highs</option>
+                <option value="new_closing_highs">New Closing highs</option>
+                <option value="new_intraday_lows">New Intraday lows</option>
+                <option value="new_closing_lows">New Closing lows</option>
+            </select>
+            <input type="submit">
+        </form>
+
+        <table class="ui selectable inverted table">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Company</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stock in stocks %} 
+                <tr>
+                    <td>{{stock.symbol}}</td>
+                    <td><a href="/stock/{{stock.symbol}}">{{stock.name}}</a></td>
+                    <!-- this href link will create links for each stock -->
+                    <!-- ex -> stock/AAPL , stock/MSFT -->
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+</body>
+</html>

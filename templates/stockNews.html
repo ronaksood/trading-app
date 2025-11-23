@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- we will use semantic ui for better styles -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css"
+    />
+  </head>
+  <body>
+    <div class="ui container">
+        <h1>
+            <a href="/stock/{{stock_news[0]['related']}}">Stock News</a>
+            <i class="arrow alternate circle right outline icon"></i>
+            {{stock_news[0]['related']}}
+        </h1>
+        
+        <table class="ui selectable inverted table">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>News</th>
+                    <th>Image</th>
+                    <th>News Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for news in stock_news %} 
+                <tr>
+                    <td>
+                        {{news['related']}}
+                        <div style="font-size: small;">{{news['datetime'].strftime('%Y-%m-%d %H:%M:%S')}}</div>
+                    </td>
+                    <td>
+                        <h3>{{news['headline']}}</h1>
+                        {{news['summary']}}
+                    </td>
+                    <td>
+                        <img src={{news['image']}} alt="img" height="80px" width="160px">
+                    </td>
+                    <td><a href={{news['url']}}>More</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+  </body>
+</html>
+
+
+
+ 
+

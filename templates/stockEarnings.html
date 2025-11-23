@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- we will use semantic ui for better styles -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css"
+    />
+  </head>
+  <body>
+    <div class="ui container">
+        <h1>
+            <a href="/stock">Stock Earnings</a>
+            <i class="arrow alternate circle right outline icon"></i>
+            {{symbol}}
+        </h1>
+        
+        <table class="ui selectable inverted table">
+            <thead>
+                <tr>
+                    <th>Period</th>
+                    <th>Quarter</th>
+                    <th>Actual</th>
+                    <th>Estimate</th>
+                    <th>Surprise</th>
+                    <th>Surprise %</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for asset in stock_earnings %} 
+                <tr>
+                    <td>{{asset['period']}}</td>
+                    <td>{{asset['quarter']}}</td>
+                    <td>{{asset['actual']}}</td>
+                    <td>{{asset['estimate']}}</td>
+                    <td>{{asset['surprise']}}</td>
+                    <td>{{asset['surprisePercent']}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+  </body>
+</html>
+
+
+
+ 
+
